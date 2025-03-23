@@ -13,55 +13,37 @@
 </head>
 <body>
 
-<%
-    Producto producto = (Producto) request.getAttribute("producto-detalle");
-    if (producto == null) {
-%>
-    <p style="color: red;">Error: No se encontró el producto.</p>
-<%
-    } else {
-%>
-  	  <header class="flex gap-4 bg-green-600 justify-center h-[50px] items-center">
-        <a href="/galactus-store" class="h-auto text-white hover:bg-green-700 p-2 rounded-md cursor-pointer">Inicio</a>
-        <a href="/galactus-store/categorias" class="h-auto text-white hover:bg-green-700 p-2 rounded-md cursor-pointer border border-white border-solid">Categorías</a>
-        <a class="h-auto text-white hover:bg-green-700 p-2 rounded-md cursor-pointer">Marcas</a>
-    </header>
-    
-    
-    <main class="p-4">
-        <div class="max-w-4xl mx-auto p-4 bg-white shadow-md rounded-md">
-            <h1 class="text-2xl font-bold text-gray-800"><%= producto.getNombre() %></h1>
+<% Producto producto = (Producto) request.getAttribute("producto-detalle"); %>
 
-            <div class="flex flex-col md:flex-row gap-4">
-                <img class="rounded-md w-1/3" src="<%= producto.getImagenUrl() != null ? producto.getImagenUrl() : Constants.IMAGEN_PRODUCTO_DEFAULT %>" alt="<%= producto.getNombre() %>">
+	<div class="max-w-4xl mx-auto bg-white shadow-md rounded-lg p-6">
+		<h1 class="text-xl font-bold text-gray-800"><%= producto.getNombre() %></h1>
 
-                <div class="flex-1">
-                    <p><strong>Modelo:</strong> <%= producto.getModelo() %></p>
-                    <p><strong>Código Interno:</strong> <%= producto.getCodigoInterno() %></p>
-                    <p><strong>Garantía:</strong> <%= producto.getTiempoGarantiaMeses() %> meses</p>
-                    <p><strong>Precio:</strong> <span class="text-blue-600 font-bold">S/ <%= producto.getPrecio() %></span></p>
-                    <p><strong>Stock:</strong> <%= producto.getStock() %> unidades</p>
-                </div>
-            </div>
+		<div class="flex gap-6 mt-4">
+			<div class="w-1/3">
+				<img src="<%= producto.getImagenUrl() != null ? producto.getImagenUrl() : Constants.IMAGEN_PRODUCTO_DEFAULT %>" 
+					alt="<%= producto.getNombre() %>" class="rounded-lg border border-gray-300 shadow-md">
+			</div>
 
-            <div class="mt-4">
-                <h2 class="text-xl font-semibold">Descripción del Producto</h2>
-                <p class="text-gray-700"><%= producto.getDescripcion() %></p>
-            </div>
-        </div>
-    </main>
-    
-    
-  	
-  	
-  	
+			<div class="w-2/3">
+				<ul class="text-gray-700 space-y-2">
+					<li><strong>Modelo:</strong> <%= producto.getModelo() %></li>
+					<li><strong>Código Interno:</strong> <%= producto.getCodigoInterno() %></li>
+					<li><strong>Garantía:</strong> <%= producto.getTiempoGarantiaMeses() %> meses</li>
+					<li><strong>Precio:</strong> <span class="text-green-600 font-semibold">S/ <%= producto.getPrecio() %></span></li>
+					<li><strong>Stock:</strong> <span class="text-red-500"><%= producto.getStock() %> unidades</span></li>
+				</ul>
+			</div>
+		</div>
 
+		<div class="mt-6">
+			<h2 class="text-lg font-bold">Descripción del Producto</h2>
+			<p class="text-gray-600 mt-2"><%= producto.getDescripcion() %></p>
+		</div>
+	</div>
 
 
 </body>
 </html>
 
-<%
-    }
-%>
+
 

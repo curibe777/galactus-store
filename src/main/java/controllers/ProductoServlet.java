@@ -17,7 +17,7 @@ import services.ProductoService;
 import services.impl.CategoriaServiceImpl;
 import services.impl.ProductoServiceImpl;
 
-@WebServlet("/productos")
+@WebServlet("/detalle_producto")
 public class ProductoServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	
@@ -29,11 +29,17 @@ public class ProductoServlet extends HttpServlet {
     }
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		Integer idSubcategoria = Integer.parseInt(request.getParameter("idSubcategoria"));
-		List<Producto> productos = productoService.listarProductosPorIdSubcategoria(idSubcategoria);
-		request.setAttribute("productos", productos);
-		RequestDispatcher dispatcher = request.getRequestDispatcher("/views/productos.jsp");
-		dispatcher.forward(request, response);
+
+		
+		Integer idProducto = 4;
+
+        
+        Producto producto = productoService.obtenerProductoPorId(idProducto);
+
+       
+        request.setAttribute("producto", producto);
+        RequestDispatcher dispatcher = request.getRequestDispatcher("/views/detalle_producto.jsp");
+        dispatcher.forward(request, response);
 	}
 
 
