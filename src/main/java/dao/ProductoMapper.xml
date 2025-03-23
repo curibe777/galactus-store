@@ -28,7 +28,7 @@
 	 		(
 				SELECT pi.imagen_url 
 				FROM producto_imagenes pi
-				WHERE pi.estado_auditoria = '1' AND pi.id_producto = p.id_producto
+				WHERE pi.id_producto = p.id_producto
 				ORDER BY pi.fecha_creacion ASC
 				LIMIT 1
 			) imagen_url, 
@@ -36,7 +36,7 @@
 	 		p.codigo_externo, p.nombre, p.descripcion, p.modelo, p.tiempo_garantia_meses,
 	 		p.precio, p.stock, p.fecha_compra, p.fecha_creacion
  		FROM productos p
- 		WHERE p.estado_auditoria = '1' and p.id_subcategoria = #{idSubcategoria}
+
  	</select>
  	
  </mapper>

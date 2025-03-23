@@ -29,18 +29,21 @@
 		<div class="flex w-full justify-center p-4 gap-4 flex-wrap">
 			<% if (productos != null && !productos.isEmpty()) { %>
 				<% for(Producto producto: productos) { %>
-					<a class="flex bg-gray-200 w-[200px] justify-center flex-col p-4 gap-1 items-center rounded-md border border-gray-300 border-solid hover:border-green-600 cursor-pointer">
-						<img class="rounded-sm" src="<%= producto.getImagenUrl() != null ? producto.getImagenUrl()  : Constants.IMAGEN_PRODUCTO_DEFAULT %>" width="150px">
-						<span class="w-full justify-between items-end flex">
-							<span class="text-xs text-left text-center text-green-600 font-medium"><%= producto.getCodigoInterno() %></span>
-							<span class="text-center font-bold text-blue-600 text-right text-xl">S/. <%= producto.getPrecio() %></span>
-						</span>
-						
-						<span class="text-center font-bold text-gray-600 text-xs"><%= producto.getNombre() %></span>
-						<span class="w-full text-red-500 text-left text-xs"><%= producto.getStock() %> unidades</span>
-						
-					</a>
-				<% 	} %>
+    <a href="/galactus-store/detalle_producto.jsp?id=<%= producto.getIdProducto() %>" target="_blank" 
+        class="flex bg-gray-200 w-[200px] justify-center flex-col p-4 gap-1 items-center rounded-md border border-gray-300 border-solid hover:border-green-600 cursor-pointer">
+        
+        <img class="rounded-sm" src="<%= producto.getImagenUrl() != null ? producto.getImagenUrl()  : Constants.IMAGEN_PRODUCTO_DEFAULT %>" width="150px">
+        
+        <span class="w-full justify-between items-end flex">
+            <span class="text-xs text-left text-center text-green-600 font-medium"><%= producto.getCodigoInterno() %></span>
+            <span class="text-center font-bold text-blue-600 text-right text-xl">S/. <%= producto.getPrecio() %></span>
+        </span>
+        
+        <span class="text-center font-bold text-gray-600 text-xs"><%= producto.getNombre() %></span>
+        <span class="w-full text-red-500 text-left text-xs"><%= producto.getStock() %> unidades</span>
+        
+    </a>
+<% } %>
 			<%	} else { %>
 				<p>No se encontraron registros</p>
 			<% } %>

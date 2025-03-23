@@ -14,9 +14,8 @@
  	</resultMap>
  
  	<select id="listarSubcategoriasPorIdCategoria" parameterType="int" resultMap="SubcategoriaMap">
- 		SELECT id_subcategoria, id_categoria, nombre, imagen_url, fecha_creacion
+ 		SELECT id_subcategoria, id_categoria, nombre, imagen_url
  		FROM subcategorias
- 		WHERE estado_auditoria = '1' and id_categoria = #{idCategoria}
  	</select>
  	
  </mapper>

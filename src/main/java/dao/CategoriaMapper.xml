@@ -13,9 +13,8 @@
  	</resultMap>
  
  	<select id="listarCategorias" resultMap="CategoriaMap">
- 		SELECT id_categoria, nombre, imagen_url, fecha_creacion
+ 		SELECT id_categoria, nombre, imagen_url
  		FROM categorias
- 		WHERE estado_auditoria = '1'
  	</select>
  	
  </mapper>
